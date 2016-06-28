@@ -1,0 +1,45 @@
+# Kill nagging nrv process
+function murder-nrv () {
+  ids=$(ps aux | grep '/other/workspace/nrv/qcbot/target' | grep -v grep | awk '{print $2}')
+  for proc in $ids; do
+    kill -9 $proc
+  done
+}
+
+# Kill webapps on local deployment
+function murder-webapps () {
+  md -te
+  rm -f /other/tomcat/conf/Catalina/localhost/*.xml
+}
+
+
+function build-nexus () {
+  CUR_DIR=`pwd`
+  cd $NEXUS_PATH
+  mvn clean install -DskipTests
+  cd $CUR_DIR
+}
+
+function deploy-webapps() {
+  CUR_DIR=`pwd`
+  cd /other/workspace/nexus/clients/$1
+  mvn tomcat:undeploy
+  md -te
+  mvn clean install -Pinit-db,populate
+  md -tb
+  mvn tomcat:exploded
+  cd $CUR_DIR
+}
+
+function build-deploy () {
+  build-nexus
+  deploy-webapps $1
+}
+
+function mvn-deploy () {
+  mvn deploy:deploy-file -DpomFile=$1 -Dfile=$2 -DrepositoryId=$3 -Durl=$4
+}
+
+function mvn-deploy-release () {
+  mvn-deploy $1 $2 releases http://nexus.crl.vecna.com:8081/nexus/content/repositories/releases
+}

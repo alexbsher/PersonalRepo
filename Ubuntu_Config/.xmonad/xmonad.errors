@@ -1,0 +1,16 @@
+
+xmonad.hs:42:15: Warning:
+    Fields of `PP' not initialised: ppTitleSanitize
+    In the expression:
+      PP
+        {ppCurrent = wrap "[" "]", ppVisible = wrap "<" ">", ppHidden = id,
+         ppHiddenNoWindows = wrap "_" "_", ppUrgent = id, ppSep = " : ",
+         ppWsSep = " ", ppTitle = shorten 80, ppLayout = id, ppOrder = id,
+         ppOutput = putStrLn, ppSort = getSortByIndex, ppExtras = []}
+    In an equation for `myDefaultPP':
+        myDefaultPP
+          = PP
+              {ppCurrent = wrap "[" "]", ppVisible = wrap "<" ">", ppHidden = id,
+               ppHiddenNoWindows = wrap "_" "_", ppUrgent = id, ppSep = " : ",
+               ppWsSep = " ", ppTitle = shorten 80, ppLayout = id, ppOrder = id,
+               ppOutput = putStrLn, ppSort = getSortByIndex, ppExtras = []}

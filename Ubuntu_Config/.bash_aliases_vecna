@@ -1,0 +1,10 @@
+alias mn=murder-nrv
+
+alias dw=deploy-webapps
+alias bn=build-nexus
+alias bd=build-deploy
+
+alias mw=murder-webapps
+
+# Code evals
+alias se="cp ../../grades_template ./grades; vim grades"

@@ -1,0 +1,109 @@
+- cmd: function b\nfor x in seq $argv[2]\ncd ..\nend\nend\n
+   when: 1407442532
+- cmd: function b\nfor x in (seq $argv[1])\ncd ..\nend\n\nend\n
+   when: 1407442559
+- cmd: function usbmod\nsudo chmod 777 /dev/ttyA*\nsudo chmod /dev/ttyU*\nend\n
+   when: 1407442636
+- cmd: function usbmod\nsudo chmod 777 /dev/ttyU*\nsudo chmod 777 /dev/ttyA*\nend\n
+   when: 1407442661
+- cmd: function b\nfor x in (seq $argv[1])\nbuiltin cd ..\nend\n\nend\n
+   when: 1407443014
+- cmd: function b\nfor x in (seq $argv[1])\nbuiltin cd ..\nend\nls\nend\n
+   when: 1407443045
+- cmd: function fuerte\n/opt/ros/fuerte/setup.bash\nend\n
+   when: 1407444048
+- cmd: function fuerte\n/opt/ros/fuerte/setup.bash\n~/rls/vros/setup.bash\n\nend\n
+   when: 1407444398
+- cmd: function rth\nrostopic hz $argv\n\nend\n
+   when: 1407502048
+- cmd: function check_argv\nend
+   when: 1407511047
+- cmd: function check_argv\nif set -q argv[1]\necho "argv set"\nelse\necho "argv not set"\nend\n\nend\n
+   when: 1407511116
+- cmd: function cd\nbuiltin cd "$argv"\nls\n\nend\n
+   when: 1407510022
+- cmd: function cd\necho $argv; builtin cd "$argv"\nls\n\nend\n
+   when: 1407510045
+- cmd: function cd\necho $argv[2]\nbuiltin cd "$argv"\nls\n\nend\n
+   when: 1407510196
+- cmd: function cd\nif test -n $argv[0]\nbuiltin cd ~\nls\nelse builtin cd "$argv"; ls; end\nend\n
+   when: 1407510310
+- cmd: function cd\nif test -n $argv[0]\nbuiltin cd ~\nls\nelse; builtin cd "$argv"\nls\nend\n\nend\n
+   when: 1407510323
+- cmd: function cd\nif test -n $argv[0]\nbuiltin cd ~\nls\nelse\nbuiltin cd "$argv"\nls\nend\n\nend\n
+   when: 1407510737
+- cmd: function cd\nif test -n argv[0]\nbuiltin cd ~\nls\nelse\nbuiltin cd "$argv"\nls\nend\n\nend\n
+   when: 1407510772
+- cmd: function cd\nif test -n argv[0]\nbuiltin cd ~\nls; echo -n $argv\nelse\nbuiltin cd "$argv"\nls\nend\n\nend\n
+   when: 1407510798
+- cmd: function cd\nif test -n $argv[1]\nbuiltin cd ~\nls\necho -n $argv[1]\nelse\nbuiltin cd "$argv"\nls\nend\n\nend\n
+   when: 1407510825
+- cmd: function rtl\nrostopic list $argv\nend\n
+   when: 1407507295
+- cmd: function usbmod\nsudo chmod 777 /dev/ttyU*\nsudo chmod 777 /dev/ttyA*\n\nend\n
+   when: 1407506489
+- cmd: function cd\\nif set -q argv[1]\\nbuiltin cd "$argv"\\nelse\\nbuiltin cd ~\\nend\\nls\\nend
+   when: 0
+- cmd: function cd\nbuiltin cd "$argv"\nls\nend\n
+   when: 1407506044
+- cmd: function grep\\ngrep --color=auto $argv\\nend
+   when: 0
+- cmd: function fuerte\\n. /opt/ros/fuerte/share/rosbash/rosfish\\n~/rls/vros/setup.bash\\n\\nend
+   when: 0
+- cmd:    paths:
+   when: 0
+- cmd:     - /opt/ros/fuerte/share/rosbash/rosfish
+   when: 0
+- cmd: function b\nfor x in (seq $argv[1])\nbuiltin cd ..\nend\nls\n\nend
+   when: 1407849374
+   paths:
+    - ..
+- cmd: function cd\nif set -q argv[1]\nbuiltin cd "$argv"\nelse\nbuiltin cd ~\nend\nls\nend
+   when: 1407849530
+- cmd: function fish_prompt\nif contains "no git" (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')\nprintf '%s[ %s@%s  %s%s : %s%s%s ] $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color normal)\nelse\nprintf '%s[ %s@%s %s%s : %s%s %s( %s %s)%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color white) (parse_git_branch) (set_color white --bold) (set_color normal)\nend\nend
+   when: 1408039251
+- cmd: function fish_prompt\nif contains "no git" (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')\nprintf '%s[ %s@%s  %s%s : %s%s%s ] $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color normal)\nelse\nprintf '%s[ %s@%s %s%s : %s%s ] %s( %s %s)%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color white) (parse_git_branch) (set_color white --bold) (set_color normal)\nend\nend
+   when: 1408470043
+- cmd: function fish_prompt\nif contains "no git" (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')\nprintf '%s[ %s@%s  %s%s : %s%s ]  %s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color normal)\nelse\nprintf '%s[ %s@%s %s%s : %s%s ] %s( %s %s)%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color white) (parse_git_branch) (set_color white --bold) (set_color normal)\nend\nend
+   when: 1408470089
+- cmd: function fish_prompt\nif contains "no git" (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')\nprintf '%s[ %s@%s  %s%s : %s%s ] %s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color normal)\nelse\nprintf '%s[ %s@%s %s%s : %s%s ] %s( %s %s)%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color white) (parse_git_branch) (set_color white --bold) (set_color normal)\nend\nend
+   when: 1408470112
+- cmd: function fish_prompt\nif contains "no git" (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')\nprintf '%s[ %s@%s  %s%s : %s%s ]%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color normal)\nelse\nprintf '%s[ %s@%s %s%s : %s%s ]%s ( %s %s)%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color white) (parse_git_branch) (set_color white --bold) (set_color normal)\nend\nend
+   when: 1409077418
+- cmd: function fish_prompt\nif contains "no git" (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')\nprintf '%s[ %s@%s  %s%s : %s%s%s :q!] $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color normal)\nelse\nprintf '%s[ %s@%s %s%s : %s%s %s( %s %s)%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color white) (parse_git_branch) (set_color white --bold) (set_color normal)\nend\nend
+   when: 1409750090
+- cmd: function fish_prompt\nif contains "no git" (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')\nprintf '%s[ %s@%s  %s%s : %s%s]%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color normal)\nelse\nprintf '%s[ %s@%s %s%s : %s%s %s( %s %s)] %s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color white) (parse_git_branch) (set_color white --bold) (set_color normal)\nend\nend
+   when: 1409750126
+- cmd: function fish_prompt\nif contains "no git" (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')\nprintf '%s[ %s@%s  %s%s : %s%s ]%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color normal)\nelse\nprintf '%s[ %s@%s %s%s : %s%s %s( %s %s) ]%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color white) (parse_git_branch) (set_color white --bold) (set_color normal)\nend\nend
+   when: 1409750139
+- cmd: function fish_prompt\nif contains "no git" (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')\nprintf '%s[ %s@%s  %s%s : %s%s ]%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color normal)\nelse\nprintf '%s[ %s@%s %s%s : %s%s ]%s( %s %s)%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color white) (parse_git_branch) (set_color white --bold) (set_color normal)\nend\nend
+   when: 1409750169
+- cmd: function fish_prompt\nif contains "no git" (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')\nprintf '%s[ %s@%s  %s%s : %s%s ]%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color normal)\nelse\nprintf '%s[ %s@%s %s%s : %s%s ] %s( %s %s)%s $ ' (set_color red --bold) (whoami) (hostname|cut -d . -f 1) (set_color cyan) (prompt_pwd) (set_color red --bold) (date +%T) (set_color white) (parse_git_branch) (set_color white --bold) (set_color normal)\nend\nend
+   when: 1409750175
+- cmd: function b\nif set -q argv[1]\nfor x in (seq $argv[1])\nbuiltin cd ..\nend\nelse\nbuiltin cd ..\nend\nls\nend
+   when: 1411048104
+   paths:
+    - ..
+    - ..
+- cmd: function ll --description 'List contents of directory using long format'\nls -lh $argv\nend
+   when: 1414443834
+- cmd: function cddev\n    cd /other/workspace\nend
+   when: 1414528657
+   paths:
+    - /other/workspace
+- cmd: function dev\n    cd /other/workspace\nend
+   when: 1414528697
+   paths:
+    - /other/workspace
+- cmd: function roscd\n    cd /other/workscpace/vros\nend
+   when: 1414605181
+- cmd: function roscd\ncd /other/workspace/vros\nend
+   when: 1414605196
+   paths:
+    - /other/workspace/vros
+- cmd: function roscd\n    cd /other/workspace/vros\nend
+   when: 1415113750
+   paths:
+    - /other/workspace/vros
+- cmd: function mvn\n    /opt/maven/bin/mvn $argv\nend
+   when: 1415386908
