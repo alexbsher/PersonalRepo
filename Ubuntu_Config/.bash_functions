@@ -151,5 +151,10 @@ function handle_dev_environment {
     echo "On the grind"
   elif [ "$HOSTNAME" == "brocean" ]; then
     echo "Chilling on the Brocean"
+  elif [ "$HOSTNAME" == "Asher-Ubuntu" ]; then
+    echo "On the new grind..."
+    source ~/.bash_functions_symbotic
+    source ~/.bash_aliases_symbotic
+    source ~/.bash_env_symbotic
   fi;
 }

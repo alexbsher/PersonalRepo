@@ -1,0 +1,5 @@
+# Placeholder for bash functions specific to symbotic
+function update-links() {
+  unlink ~/CaseEstimatorTest/LogData.m
+  ln -s /mnt/hgfs/Documents/$1 LogData.m
+}

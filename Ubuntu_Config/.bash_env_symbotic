@@ -1,0 +1,2 @@
+# Bash Environment Variables specific to Symbotic Dev
+export PATH=$PATH:/opt/OSELAS.Toolchain-1.99.3/powerpc-603e-linux-gnu/gcc-4.3.2-glibc-2.8-binutils-2.18-kernel-2.6.27-sanitized/bin:/opt/TimeSys/mpc8272_ads/toolchain/ccache:/opt/TimeSys/mpc8272_ads/toolchain/bin:/home/asher/eclipse-projects/bot8/bin/obj/src/embedded/Intelligence/gcc-4.4.3/debug/link-static/threading-multi
